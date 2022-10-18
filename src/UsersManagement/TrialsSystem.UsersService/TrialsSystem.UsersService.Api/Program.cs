@@ -20,6 +20,8 @@ namespace TrialsSystem.UsersService.Api
 
             builder.Services.AddControllers();
 
+            builder.Services.AddFluentValidationAutoValidation();
+
             builder.Services.AddValidatorsFromAssemblyContaining<CreateUserRequestValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserRequestValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<GetUserByIdQueryValidator>();

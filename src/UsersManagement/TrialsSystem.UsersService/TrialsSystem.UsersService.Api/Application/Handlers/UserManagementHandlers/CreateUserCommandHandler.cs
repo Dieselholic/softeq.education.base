@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using TrialsSystem.UsersService.Api.Application.Commands.UserManagementCommands;
 using TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate;
 using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs.UserResponses;

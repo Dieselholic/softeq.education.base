@@ -17,7 +17,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
-
+        
         public UsersController(IMediator mediator)
         {
             _mediator = mediator;
@@ -63,6 +63,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostAsync(CreateUserRequest request)
         {
+
             var response = await _mediator.Send(new CreateUserCommand(request.Email,
                                                                       request.Name,
                                                                       request.Surname,
