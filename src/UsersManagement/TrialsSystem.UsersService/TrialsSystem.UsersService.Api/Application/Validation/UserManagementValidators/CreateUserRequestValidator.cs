@@ -37,7 +37,7 @@ namespace TrialsSystem.UsersService.Api.Application.Validation.UserManagementVal
                 .LessThanOrEqualTo(DateTime.Now.AddYears(-18))
                 .WithMessage("The participant should be older than 18 years.");
 
-            bool? isDomainPartIPv = null;
+            bool isDomainPartIPv = false;
 
             When(u =>
             {
@@ -47,7 +47,7 @@ namespace TrialsSystem.UsersService.Api.Application.Validation.UserManagementVal
 
                     isDomainPartIPv = Uri.CheckHostName(emailDomainPart) == UriHostNameType.IPv4 || Uri.CheckHostName(emailDomainPart) == UriHostNameType.IPv6;
 
-                    return true;
+                    return Regex.IsMatch(emailDomainPart, @"[\w\-\.]+\.[\w\-\.]+") || isDomainPartIPv;
                 }
                 return false;
             }, () =>
@@ -61,17 +61,18 @@ namespace TrialsSystem.UsersService.Api.Application.Validation.UserManagementVal
                     .Must(uel => Regex.IsMatch(uel, emailPartsFirstLastSymbolsRegex)).WithMessage("Email adress local part fist/last symbol should be a latin letter (a-z) or a number (0-9).").WithName("Email")
                     .Length(1, 63).WithMessage("Email adress local part can't be less than 2 and longer than 63 symbols.").WithName("Email");
 
-                if (isDomainPartIPv.HasValue && isDomainPartIPv.Value == true)
+                When(u => isDomainPartIPv == false, () =>
                 {
                     RuleFor(u => u.Email.Substring(u.Email.IndexOf('@') + 1))
+                        .Must(u => false).WithMessage("{PropertyValue}")
                         .Must(ued => !Regex.IsMatch(ued, emailPartsValidSymbolsRegex)).WithMessage("Email adress can contains : latin letters (a-z, A-Z), numbers (0-9), special symbols('.', '-', '_').").WithName("Email")
                         .Length(3, 253).WithMessage("Email adress domain part can't be less than 3 and longer than 253 symbols.").WithName("Email");
 
-                    RuleForEach(u => u.Email.Split('.', StringSplitOptions.None).ToList())
+                    RuleForEach(u => u.Email.Substring(u.Email.IndexOf('@') + 1).Split('.', StringSplitOptions.None).ToList())
                         .Must(uedp => Regex.IsMatch(uedp, emailPartsFirstLastSymbolsRegex)).WithMessage("Email adress domain parts fist/last symbol should be a latin letter (a-z) or a number (0-9).").WithName("Email")
                         .Must(uedp => Regex.IsMatch(uedp, emailDomainPartsNotOnlyNumbersRegex)).WithMessage("Email adress domains part must contains at least one lattin letter.").WithName("Email")
-                        .Length(1, 63).WithMessage("Email adress domain part can't be less than 3 and longer than 253 symbols.").WithName("Email");
-                }
+                        .Length(1, 63).WithMessage("Email adress domain part can't be less than 3 and longer than 63 symbols.").WithName("Email");
+                });
             }).Otherwise(() => RuleFor(u => u.Email).Must(ue => false).WithMessage("Domain/Local part of email in invalid."));
 
 
