@@ -1,7 +1,7 @@
 ﻿namespace TrialsSystem.UsersService.Api.Exceptions
 {
     /// <summary>
-    /// UserNotFondException
+    /// TrialUserNotFondException
     /// </summary>
     public class TrialUserNotFondException : Exception
     {

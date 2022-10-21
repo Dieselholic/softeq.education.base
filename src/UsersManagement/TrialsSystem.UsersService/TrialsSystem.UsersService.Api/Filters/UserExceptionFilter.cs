@@ -23,6 +23,10 @@ namespace TrialsSystem.UsersService.Api.Filters
                     _logger.LogCritical("User with Id {id} not found", userNotFoundexception.Id);
                     SetContextResult(context, new BadRequestResult());
                     break;
+                case UserAlreadyExistsException userAlreadyExistsException:
+                    _logger.LogCritical("User with Email {email} already exists", userAlreadyExistsException.Email);
+                    SetContextResult(context, new BadRequestResult());
+                    break;
                 default:
                     _logger.LogCritical("System error occurred. Message: {message}. Inner exception: {innerException}. Stack trace: {stackTrace}",
                         context.Exception.Message,

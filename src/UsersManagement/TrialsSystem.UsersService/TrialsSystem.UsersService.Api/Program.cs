@@ -1,10 +1,9 @@
 using System.Reflection;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using MediatR;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using TrialsSystem.UsersService.Api.Application.Validation;
+using TrialsSystem.UsersService.Api.Application.Validation.CityManagementValidators;
+using TrialsSystem.UsersService.Api.Application.Validation.UserManagementValidators;
 using TrialsSystem.UsersService.Api.Filters;
 
 namespace TrialsSystem.UsersService.Api
@@ -19,7 +18,15 @@ namespace TrialsSystem.UsersService.Api
 
             builder.Services.AddControllers();
 
-            builder.Services.AddValidatorsFromAssemblyContaining<EditUserRequestValidator>();
+            builder.Services.AddFluentValidationAutoValidation();
+
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateUserRequestValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserRequestValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<GetUserByIdQueryValidator>();
+
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateCityRequestValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<UpdateCityRequestValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<GetCityByIdQueryValidator>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -49,7 +56,6 @@ namespace TrialsSystem.UsersService.Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
