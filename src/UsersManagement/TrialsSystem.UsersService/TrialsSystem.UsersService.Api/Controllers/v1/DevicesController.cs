@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TrialsSystem.UsersService.Api.Application.Commands.DeviceManagementCommands;
 using TrialsSystem.UsersService.Api.Application.Queries.DeviceManagementQueries;
-using TrialsSystem.UsersService.Infrastructure.Models.DeviceDTOs.CityResponses;
 using TrialsSystem.UsersService.Infrastructure.Models.DeviceDTOs.DeviceRequests;
 using TrialsSystem.UsersService.Infrastructure.Models.DeviceDTOs.DeviceResponses;
 

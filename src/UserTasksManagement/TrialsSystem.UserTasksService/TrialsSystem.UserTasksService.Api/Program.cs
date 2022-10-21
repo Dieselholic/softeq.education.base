@@ -1,12 +1,8 @@
-using System.Reflection;
-using FluentValidation;
-using MediatR;
 using Microsoft.OpenApi.Models;
-using TrialsSystem.UsersService.Api.Application.Validation.CityManagementValidators;
-using TrialsSystem.UsersService.Api.Application.Validation.UserManagementValidators;
-using TrialsSystem.UsersService.Api.Filters;
+using MediatR;
+using System.Reflection;
 
-namespace TrialsSystem.UsersService.Api
+namespace TrialsSystem.UserTasksService.Api
 {
     public class Program
     {
@@ -15,18 +11,7 @@ namespace TrialsSystem.UsersService.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-
-            builder.Services.AddFluentValidationAutoValidation();
-
-            builder.Services.AddValidatorsFromAssemblyContaining<CreateUserRequestValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserRequestValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<GetUserByIdQueryValidator>();
-
-            builder.Services.AddValidatorsFromAssemblyContaining<CreateCityRequestValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<UpdateCityRequestValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<GetCityByIdQueryValidator>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -34,7 +19,7 @@ namespace TrialsSystem.UsersService.Api
             builder.Services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
-                    new OpenApiInfo { Title = "TrialsSystem.UsersService", Version = "v1" }
+                    new OpenApiInfo { Title = "TrialsSystem.UserTasksService", Version = "v1" }
 
                     );
                 var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -42,7 +27,6 @@ namespace TrialsSystem.UsersService.Api
             });
 
             builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-            builder.Services.AddScoped<UserExceptionFilter>();
 
             var app = builder.Build();
 

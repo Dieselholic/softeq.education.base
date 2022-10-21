@@ -1,6 +1,6 @@
 ﻿using TrialsSystem.UsersService.Infrastructure.Models.DeviceDTOs.DeviceRequests;
 
-namespace TrialsSystem.UsersService.Infrastructure.Models.DeviceDTOs.CityResponses
+namespace TrialsSystem.UsersService.Infrastructure.Models.DeviceDTOs.DeviceResponses
 {
     public class CreateDeviceResponse : CreateDeviceRequest
     {

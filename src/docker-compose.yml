@@ -18,7 +18,6 @@ services:
     container_name: redis
     volumes:
       - /data/redis:/data
-  
     
   um.users.service:
     image: um.users.service
@@ -26,5 +25,14 @@ services:
     build:
       context: .
       dockerfile: UsersManagement/TrialsSystem.UsersService/Dockerfile
+    depends_on:
+      - mongo
+      
+  um.usertasks.service:
+    image: um.usertasks.service
+    container_name: um.usertasks.service
+    build:
+      context: .
+      dockerfile: UserTasksmanagement/TrialsSystem.UserTasksService/Dockerfile
     depends_on:
       - mongo
