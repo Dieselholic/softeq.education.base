@@ -3,13 +3,13 @@
     public class UpdateUserCommand
     {
         public UpdateUserCommand(string id,
-            string name,
-            string surname,
-            string cityId,
-            DateTime birthDate,
-            decimal? weight,
-            decimal? height,
-            string genderId)
+                                 string name,
+                                 string surname,
+                                 string cityId,
+                                 DateTime birthDate,
+                                 decimal? weight,
+                                 decimal? height,
+                                 string genderId)
         {
             Id = id;
             Name = name;
@@ -21,19 +21,19 @@
             GenderId = genderId;
         }
 
-        public string Id { get; private set; }
+        public string Id { get; }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public string Surname { get; set; }
+        public string Surname { get; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate { get; }
 
-        public decimal? Weight { get; set; }
+        public decimal? Weight { get; }
 
-        public decimal? Height { get; set; }
+        public decimal? Height { get; }
 
-        public string CityId { get; set; }
+        public string CityId { get; }
 
         public string GenderId { get; }
 

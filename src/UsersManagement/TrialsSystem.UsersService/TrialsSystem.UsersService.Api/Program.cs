@@ -1,5 +1,6 @@
 using System.Reflection;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.OpenApi.Models;
 using TrialsSystem.UsersService.Api.Application.Validation.CityManagementValidators;

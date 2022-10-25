@@ -5,14 +5,16 @@ namespace TrialsSystem.UserTasksService.Api.Application.Queries.UserTaskManageme
 {
     public class GetUserTaskByIdQuery : IRequest<GetUserTaskResponse>
     {
-        public string UserId { get; }
-
-        public string Id { get; }
-
-        public GetUserTaskByIdQuery(string userId, string id)
+        public GetUserTaskByIdQuery(string userId,
+                                    string id)
         {
             UserId = userId;
             Id = id;
         }
+
+        public string UserId { get; }
+
+        public string Id { get; }
+
     }
 }

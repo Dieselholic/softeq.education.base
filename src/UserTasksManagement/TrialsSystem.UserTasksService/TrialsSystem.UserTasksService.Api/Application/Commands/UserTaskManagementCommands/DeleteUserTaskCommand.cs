@@ -2,11 +2,12 @@
 {
     public class DeleteUserTaskCommand
     {
-        public string Id { get; private set; }
-
         public DeleteUserTaskCommand(string id)
         {
             Id = id;
         }
+
+        public string Id { get; }
+
     }
 }

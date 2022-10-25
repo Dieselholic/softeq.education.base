@@ -5,17 +5,19 @@ namespace TrialsSystem.UsersService.Api.Application.Queries.UserManagementQuerie
 {
     public class GetUsersQuery : IRequest<IEnumerable<GetUserResponse>>
     {
+        public GetUsersQuery(int? take,
+                             int? skip,
+                             string email)
+        {
+            Take = take;
+            Skip = skip;
+            Email = email;
+        }
         public int? Take { get; }
 
         public int? Skip { get; }
 
         public string? Email { get; }
 
-        public GetUsersQuery(int? take, int? skip, string email)
-        {
-            Take = take;
-            Skip = skip;
-            Email = email;
-        }
     }
 }

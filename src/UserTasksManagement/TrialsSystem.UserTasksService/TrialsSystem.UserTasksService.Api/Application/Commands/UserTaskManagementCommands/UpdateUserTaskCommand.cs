@@ -13,11 +13,11 @@
 
 
 
-        public string Id { get; private set; }
+        public string Id { get; }
 
-        public string Status { get; set; }
+        public string Status { get; }
 
-        public Dictionary<string, string> AdditionalProperties { get; set; }
+        public Dictionary<string, string> AdditionalProperties { get; }
 
     }
 }

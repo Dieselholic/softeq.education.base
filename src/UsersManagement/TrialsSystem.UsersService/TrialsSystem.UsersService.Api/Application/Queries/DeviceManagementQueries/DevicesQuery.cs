@@ -5,14 +5,16 @@ namespace TrialsSystem.UsersService.Api.Application.Queries.DeviceManagementQuer
 {
     public class DevicesQuery : IRequest<IEnumerable<GetDeviceResponse>>
     {
-        public int? Take { get; }
-
-        public int? Skip { get; }
-
-        public DevicesQuery(int? take, int? skip)
+        public DevicesQuery(int? take,
+                            int? skip)
         {
             Take = take;
             Skip = skip;
         }
+
+        public int? Take { get; }
+
+        public int? Skip { get; }
+
     }
 }

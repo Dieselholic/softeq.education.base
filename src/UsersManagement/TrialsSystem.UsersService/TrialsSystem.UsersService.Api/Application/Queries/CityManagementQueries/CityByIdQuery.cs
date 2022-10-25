@@ -5,14 +5,16 @@ namespace TrialsSystem.UsersService.Api.Application.Queries.CityManagementQuerie
 {
     public class CityByIdQuery : IRequest<IEnumerable<GetCityResponse>>
     {
-        public string CityId { get; }
-
-        public string Id { get; }
-
-        public CityByIdQuery(string cityId, string id)
+        public CityByIdQuery(string cityId,
+                             string id)
         {
             CityId = cityId;
             Id = id;
         }
+
+        public string CityId { get; }
+
+        public string Id { get; }
+
     }
 }

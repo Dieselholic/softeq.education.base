@@ -6,13 +6,13 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserManagementComma
     public class CreateUserCommand : IRequest<CreateUserResponse>
     {
         public CreateUserCommand(string email,
-            string name,
-            string surname,
-            string cityId,
-            DateTime birthDate,
-            decimal? weight,
-            decimal? height,
-            string genderId)
+                                 string name,
+                                 string surname,
+                                 string cityId,
+                                 DateTime birthDate,
+                                 decimal? weight,
+                                 decimal? height,
+                                 string genderId)
         {
             Email = email;
             Name = name;
@@ -39,7 +39,6 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserManagementComma
         public decimal? Height { get; }
 
         public string GenderId { get; }
-
 
     }
 }

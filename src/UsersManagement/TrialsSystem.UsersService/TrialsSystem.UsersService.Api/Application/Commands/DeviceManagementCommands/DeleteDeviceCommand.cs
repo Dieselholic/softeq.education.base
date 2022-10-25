@@ -2,11 +2,12 @@
 {
     public class DeleteDeviceCommand
     {
-        public string Id { get; private set; }
-
         public DeleteDeviceCommand(string id)
         {
             Id = id;
         }
+
+        public string Id { get; }
+
     }
 }

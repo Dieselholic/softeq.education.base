@@ -12,8 +12,8 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
             Name = name;
             Surname = surname;
             CityId = cityd;
-            BirthDate = birthDate;
             GenderId = genderId;
+            BirthDate = birthDate;
         }
 
         public string Email { get; private set; }

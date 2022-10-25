@@ -18,15 +18,15 @@ namespace TrialsSystem.UserTasksService.Api.Application.Commands.UserTaskManagem
             AdditionalProperties = additionalProperties;
         }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public string Status { get; set; }
+        public string Status { get; }
 
-        public DateTime CreatedDateTime { get; set; }
+        public DateTime CreatedDateTime { get; }
 
-        public DateTime LastUpdatedDateTime { get; set; }
+        public DateTime LastUpdatedDateTime { get; }
 
-        public Dictionary<string, string> AdditionalProperties { get; set; }
+        public Dictionary<string, string> AdditionalProperties { get; }
 
     }
 }

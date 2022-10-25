@@ -5,14 +5,16 @@ namespace TrialsSystem.UsersService.Api.Application.Queries.DeviceManagementQuer
 {
     public class DeviceByIdQuery : IRequest<IEnumerable<GetDeviceResponse>>
     {
-        public string DeviceId { get; }
-
-        public string Id { get; }
-
-        public DeviceByIdQuery(string deviceId, string id)
+        public DeviceByIdQuery(string deviceId,
+                               string id)
         {
             DeviceId = deviceId;
             Id = id;
         }
+
+        public string DeviceId { get; }
+
+        public string Id { get; }
+
     }
 }
